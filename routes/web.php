@@ -1,8 +1,6 @@
 <?php
 
 use App\Http\Controllers\PostController;
-use App\Http\Resources\PostResource;
-use App\Models\Post;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -38,7 +36,4 @@ Route::middleware([
 });
 
 Route::get('posts', [PostController::class, 'index'])->name('posts.index');
-
-Route::get('test', function () {
-    return PostResource::collection(Post::all());
-});
+Route::get('posts/{post}', [PostController::class, 'show'])->name('posts.show');
