@@ -36,6 +36,8 @@ Route::middleware([
     })->name('dashboard');
 });
 
-Route::get('posts', [PostController::class, 'index'])->name('posts.index');
-Route::get('posts/{post}', [PostController::class, 'show'])->name('posts.show');
-Route::post('posts/{post}/comments', [CommentController::class, 'store'])->name('posts.comment.store');
+Route::prefix('posts')->group(function () {
+    Route::get('/', [PostController::class, 'index'])->name('posts.index');
+    Route::get('{post}', [PostController::class, 'show'])->name('posts.show');
+    Route::post('{post}/comments', [CommentController::class, 'store'])->name('posts.comment.store');
+});
