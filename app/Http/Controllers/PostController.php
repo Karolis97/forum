@@ -2,17 +2,22 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\PostResource;
 use App\Models\Post;
 use Illuminate\Http\Request;
+use Inertia\Response;
+use Inertia\ResponseFactory;
 
 class PostController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(): Response|ResponseFactory
     {
-        //
+        return inertia('Posts/Index', [
+            'posts' => PostResource::collection(Post::with('user')->paginate()),
+        ]);
     }
 
     /**

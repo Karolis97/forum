@@ -42,6 +42,13 @@ class User extends Authenticatable implements MustVerifyEmail
         'two_factor_secret',
     ];
 
+    protected $visible = [
+        'id',
+        'name',
+        'email',
+        'updated_at',
+    ];
+
     /**
      * The attributes that should be cast.
      *
