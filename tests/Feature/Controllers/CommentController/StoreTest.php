@@ -6,6 +6,12 @@ use App\Models\User;
 use Illuminate\Support\Str;
 
 use function Pest\Laravel\actingAs;
+use function Pest\Laravel\post;
+
+it('requires authentication', function () {
+    post(route('posts.comment.store', Post::factory()->create()))
+        ->assertRedirect(route('login'));
+});
 
 it('can store a comment', function () {
     $user = User::factory()->create();

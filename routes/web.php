@@ -34,10 +34,11 @@ Route::middleware([
     Route::get('/dashboard', function () {
         return Inertia::render('Dashboard');
     })->name('dashboard');
+
+    Route::post('{post}/comments', [CommentController::class, 'store'])->name('posts.comment.store');
 });
 
 Route::prefix('posts')->group(function () {
     Route::get('/', [PostController::class, 'index'])->name('posts.index');
     Route::get('{post}', [PostController::class, 'show'])->name('posts.show');
-    Route::post('{post}/comments', [CommentController::class, 'store'])->name('posts.comment.store');
 });
