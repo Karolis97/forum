@@ -53,7 +53,7 @@ const commentForm = useForm({
    body: '',
 });
 
-const addComment = () => commentForm.post(route('posts.comment.store', props.post.id), {
+const addComment = () => commentForm.post(route('posts.comments.store', props.post.id), {
     preserveScroll: true,
     onSuccess: () => commentForm.reset(),
 });
