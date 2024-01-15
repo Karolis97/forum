@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StoreCommentRequest;
 use App\Models\Comment;
 use App\Models\Post;
+use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 
@@ -66,9 +67,13 @@ class CommentController extends Controller
 
     /**
      * Remove the specified resource from storage.
+     *
+     * @throws AuthorizationException
      */
-    public function destroy(Comment $comment)
+    public function destroy(Request $request, Comment $comment): RedirectResponse
     {
+        $this->authorize('delete', $comment);
+
         $comment->delete();
 
         return to_route('posts.show', $comment->post_id);
