@@ -27,7 +27,8 @@ class CommentController extends Controller
             'post_id' => $post->id,
         ]);
 
-        return to_route('posts.show', $post);
+        return to_route('posts.show', $post)
+            ->banner('Comment added.');
     }
 
     /**
@@ -37,7 +38,8 @@ class CommentController extends Controller
     {
         $comment->update($request->validated());
 
-        return to_route('posts.show', ['post' => $comment->post_id, 'page' => $request->query('page')]);
+        return to_route('posts.show', ['post' => $comment->post_id, 'page' => $request->query('page')])
+            ->banner('Comment updated.');
     }
 
     /**
@@ -47,6 +49,7 @@ class CommentController extends Controller
     {
         $comment->delete();
 
-        return to_route('posts.show', ['post' => $comment->post_id, 'page' => $request->query('page')]);
+        return to_route('posts.show', ['post' => $comment->post_id, 'page' => $request->query('page')])
+            ->banner('Comment deleted.');
     }
 }
