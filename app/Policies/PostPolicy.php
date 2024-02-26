@@ -4,7 +4,6 @@ namespace App\Policies;
 
 use App\Models\Post;
 use App\Models\User;
-use Carbon\Carbon;
 
 class PostPolicy
 {
@@ -29,7 +28,7 @@ class PostPolicy
      */
     public function create(User $user): bool
     {
-        return $user->created_at->lte(Carbon::now()->subWeek());
+        return true;
     }
 
     /**
