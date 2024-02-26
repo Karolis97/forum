@@ -16,7 +16,7 @@
                     <div class="space-y-3 pb-2">
                         <InputLabel for="body" class="sr-only">Comment</InputLabel>
                         <TextArea ref="commentTextAreaRef" id="body" v-model="commentForm.body" rows="4"
-                                  placeholder="Write a comment for this post!"/>
+                                  placeholder="Write a comment for this post!" />
                         <InputError :message="commentForm.errors.body"></InputError>
                     </div>
 
