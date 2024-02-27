@@ -53,7 +53,7 @@ cp .env.example .env
 ```
 
 ## Usage
-To access the application, open your web browser and visit http://localhost. You should see the Laravel Forum application running. Register a new account or login to start participating in forum discussions.
+To access the application, open your web browser and visit http://localhost/posts. You should see the Laravel Forum application running. Register a new account or login to start participating in forum discussions.
 
 #### Demo account:
 ###### user@example.com
